@@ -93,7 +93,7 @@ void vector_t::push_back(int value)
 void vector_t::pop_back()
 {
     size_ --;
-    if(size_ == 0 | | size_ * 4 == capacity_) {
+    if(size_ == 0 || size_ * 4 == capacity_) {
         int *mas;
         mas = new int[size_];
         for(std::size_t i = 0; i < size_; ++i) {
