@@ -66,27 +66,27 @@ void vector_t::push_back(int value)
             size_ = 1;
             elements_ = new int[capacity_];
             elements_[0] = value;
-    }
+            }
+            else {
+                int *mas;
+                mas = new int[size_];
+                for(std::size_t i = 0; i < size_; ++i) {
+                    mas[i] = elements_[i];
+                }
+                delete [] elements_;
+                capacity_ = 2 * capacity_;
+                elements_ = new int[capacity_];
+                for(std::size_t i = 0; i < size_; ++i) {
+                    elements_[i] = mas[i];
+                }
+                delete [] mas;
+                elements_[size_] = value;
+                size_ ++;
+            }
+    }    
     else {
-            int *mas;
-            mas = new int[size_];
-            for(std::size_t i = 0; i < size_; ++i) {
-                mas[i] = elements_[i];
-            }
-            delete [] elements_;
-            capacity_ = 2 * capacity_;
-            elements_ = new int[capacity_];
-            for(std::size_t i = 0; i < size_; ++i) {
-                elements_[i] = mas[i];
-            }
-            delete [] mas;
-            elements_[size_] = value;
-            size_ ++;
-        }
-        else {
-            elements_[size_] = value;
-            size_ ++;
-        }
+        elements_[size_] = value;
+        size_ ++;
     }
 }
 
