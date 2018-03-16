@@ -3,37 +3,55 @@
 
 #include "vector.hpp"
 
-vector_t::vector_t()
-{
-}
+    vector_t::vector_t() {
+        elements_ = nullptr;
+        size_ = 0;
+        capacity_ = 0;
+    }
 
-vector_t::vector_t(vector_t const & other)
-{
-}
+    vector_t::vector_t(vector_t const &other) {
+        size_ = other.size_;
+        capacity_ = other.capacity_;
+        elements_ = new int[capacity_];
+        for (int i = 0; i < other.size_; ++i) {
+            elements_[i] = other.elements_[i];
+        }
+    }
 
-vector_t & vector_t::operator =(vector_t const & other)
-{
-	return *this;
-}
+    vector_t &vector_t::operator=(vector_t const &other) {
+        delete[] elements_;
+        size_ = other.size_;
+        capacity_ = other.capacity_;
+        int *elements_ = new int [capacity_];
+        for (int i = 0; i < other.size_; ++i) {
+            elements_[i] = other.elements_[i];
+        }
+        return *this;
+    }
 
-bool vector_t::operator ==(vector_t const & other) const
-{
-	return false;
-}
+    bool vector_t::operator==(vector_t const &other) const {
+        if (size_ != other.size_) {
+            return false;
+        }
+        for (int i = 0; i < size_; ++i) {
+            if (elements_[i] != other.elements_[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
 
-vector_t::~vector_t()
-{
-}
+    vector_t::~vector_t() {
+        delete[] elements_;
+    }
 
-std::size_t vector_t::size() const
-{
-    return 0;
-}
+    std::size_t vector_t::size() const {
+        return size_;
+    }
 
-std::size_t vector_t::capacity() const
-{
-    return 0;
-}
+    std::size_t vector_t::capacity() const {
+        return capacity_;
+    }
 
 void vector_t::push_back(int value)
 {
