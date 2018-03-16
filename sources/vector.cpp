@@ -71,7 +71,10 @@ int vector_t::operator [](std::size_t index) const
 	return elements_[index];
 }
 
-bool operator !=(vector_t const & lhs, vector_t const & rhs)
-{
-	return true;
+ bool operator!=(vector_t const &lhs, vector_t const &rhs) {
+        bool success = true;
+        if (lhs == rhs) {
+            success = !success;
+        }
+        return success;
 }
