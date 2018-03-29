@@ -60,7 +60,7 @@ vector_t<T> & vector_t<T>::operator =(vector_t const & other)
     delete[] elements_;
     size_ = other.size_;
     capacity_ = other.capacity_;
-    int *elements_ = new T [capacity_];
+    T *elements_ = new T [capacity_];
     for (int i = 0; i < other.size_; ++i) {
         elements_[i] = other.elements_[i];
     }
@@ -99,7 +99,7 @@ std::size_t vector_t<T>::capacity() const
 }
 
 template <typename T>
-void vector_t<T>::push_back(int value)
+void vector_t<T>::push_back(T value)
 {
     if(size_ == capacity_) {
 	    if(capacity_ == 0) {
@@ -152,13 +152,13 @@ void vector_t<T>::pop_back()
 }
 
 template <typename T>
-int & vector_t<T>::operator [](std::size_t index)
+T & vector_t<T>::operator [](std::size_t index)
 {
 	return elements_[index];
 }
 
 template <typename T>
-int vector_t<T>::operator [](std::size_t index) const
+T vector_t<T>::operator [](std::size_t index) const
 {
 	return elements_[index];
 }
