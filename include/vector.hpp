@@ -109,7 +109,7 @@ void vector_t<T>::push_back(T value)
             elements_[0] = value;
             }
             else {
-                int *mas;
+                T *mas;
                 mas = new T[size_];
                 for(std::size_t i = 0; i < size_; ++i) {
                     mas[i] = elements_[i];
