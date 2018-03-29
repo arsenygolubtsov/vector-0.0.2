@@ -5,14 +5,14 @@
 
 vector_t::vector_t()
 {
-	 elements_ = nullptr;
+     elements_ = nullptr;
      size_ = 0;
      capacity_ = 0;
 }
 
 vector_t::vector_t(vector_t const & other)
 {
-	size_ = other.size_;
+    size_ = other.size_;
     capacity_ = other.capacity_;
     elements_ = new int[capacity_];
     for (int i = 0; i < other.size_; ++i) {
@@ -22,7 +22,7 @@ vector_t::vector_t(vector_t const & other)
 
 vector_t & vector_t::operator =(vector_t const & other)
 {
-	delete[] elements_;
+    delete[] elements_;
     size_ = other.size_;
     capacity_ = other.capacity_;
     int *elements_ = new int [capacity_];
@@ -46,6 +46,7 @@ bool vector_t::operator ==(vector_t const & other) const
 
 vector_t::~vector_t()
 {
+    delete[] elements_;
 }
 
 std::size_t vector_t::size() const
